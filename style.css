@@ -1,0 +1,78 @@
+* {
+    font-family:  'Roboto', sans-serif;;
+}
+
+.login{
+    width: 300px;
+    height: 150px;
+    position: fixed;
+    top: 150px;
+    left: calc(50% - 150px);
+    display: flex;
+    flex-direction: column;
+    background-color: aqua;
+    justify-content: center;
+    align-items: center;
+ }
+
+.header{
+    width: 100vw;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    background-color: #FFFFFF;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.05);
+    position: fixed;
+    top: 0px;
+ }
+
+ .logo{
+    margin-left: 22px;
+ }
+
+ .people{
+    margin-right: 24px;
+ }
+
+ .vector{
+    margin: 27px;
+  }
+
+ .footer{
+    width: 100vw;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    background-color: #FFFFFF;
+    box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.05);
+    position: fixed;
+    bottom: 0px;
+ }
+
+ #mensagem{
+    box-sizing: border-box;
+    resize: none;
+    border: none;
+    font-size: 18px;
+    max-height: 80px;
+ 
+  }
+
+  #mensagem::placeholder{
+    font-style: italic;
+    color: #000000;
+    font-weight: 400;
+    font-size: 18px;
+  }
+
+  .conteudoMensagens{
+    width: 100vw;
+    height: 100vh;
+    margin-top: 80px;
+    margin-bottom: 80px;
+    background-color: blueviolet;
+  }
