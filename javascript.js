@@ -49,7 +49,7 @@ function usuarioDefinido(){
 }
 
 function erroUsuario(){
-     alert("Erro! Este usuário já foi utilizado.");
+     alert("Erro! Este usuário já está sendo utilizado.");
      atualizaPagina();
 }
 
@@ -83,12 +83,13 @@ function defineUsuario(){
                }
  
                boxMensagens.scrollTop = boxMensagens.scrollHeight;
-               console.log(asMensagens);   
+              // console.log(asMensagens);   
       })
  };
           
 
  function verificaStatus(){
      statusAtual = axios.post("https://mock-api.driven.com.br/api/vm/uol/status", usuario)
+    // console.log(statusAtual);
   }
  
