@@ -17,6 +17,7 @@ let mensagem = {
  let promessa;
  let todasMensagens;
  let statusAtual;
+ let usuarioValido;
  
 
 function enviarMensagem(){
@@ -27,6 +28,12 @@ function enviarMensagem(){
      console.log(mensagem);
      promessa =  axios.post("https://mock-api.driven.com.br/api/vm/uol/messages", mensagem);
      renderizaMensagens();
+     promessa.then(renderizaMensagens);
+     promessa.catch(atualizaPagina);
+ }
+
+ function atualizaPagina(){
+     window.location.reload();
  }
 
 function usuarioDefinido(){
@@ -43,6 +50,7 @@ function usuarioDefinido(){
 
 function erroUsuario(){
      alert("Erro! Este usuário já foi utilizado.");
+     atualizaPagina();
  
 
 }
