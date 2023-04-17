@@ -25,16 +25,18 @@ function enviarMensagem(){
      mensagemEnviada = document.querySelector('.mensagem').value;
      mensagem.text = mensagemEnviada;
      mensagem.type = 'message'
-     console.log(mensagem);
      promessa =  axios.post("https://mock-api.driven.com.br/api/vm/uol/messages", mensagem);
      renderizaMensagens();
      promessa.then(renderizaMensagens);
      promessa.catch(atualizaPagina);
- }
 
+ }
+ 
  function atualizaPagina(){
      window.location.reload();
  }
+
+ 
 
 function usuarioDefinido(){
      divLogin.remove();
@@ -43,16 +45,12 @@ function usuarioDefinido(){
      renderizaMensagens();
      setInterval(renderizaMensagens, 3000);
      setInterval(verificaStatus, 5000);
-    // 
-     console.log(mensagem);     
-
+  
 }
 
 function erroUsuario(){
      alert("Erro! Este usuário já foi utilizado.");
      atualizaPagina();
- 
-
 }
 
 function defineUsuario(){
@@ -74,24 +72,21 @@ function defineUsuario(){
                boxMensagens.innerText = ""
                for(let i = asMensagens.length; i > 0 ; i-- ) {
 
-                 //   if(asMensagens[i].type == "message"){
+                 //   if(asMensagens[i].type === "message"){
                boxMensagens.innerHTML += 
                `<li data-test="message"><p>
                <time>(${asMensagens[asMensagens.length-[i]].time})</time>
                <strong>${asMensagens[asMensagens.length-[i]].from}</strong>
                para <strong>${asMensagens[asMensagens.length-[i]].to}</strong>
                ${asMensagens[asMensagens.length-[i]].text}</p></li>`
-
-
                
                }
  
                boxMensagens.scrollTop = boxMensagens.scrollHeight;
-               console.log(asMensagens);
-
-               
+               console.log(asMensagens);   
       })
  };
+          
 
  function verificaStatus(){
      statusAtual = axios.post("https://mock-api.driven.com.br/api/vm/uol/status", usuario)
