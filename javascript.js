@@ -16,12 +16,14 @@ let mensagem = {
  }
  let promessa;
  let todasMensagens;
+ let statusAtual;
  
 
 function enviarMensagem(){
  
      mensagemEnviada = document.querySelector('.mensagem').value;
      mensagem.text = mensagemEnviada;
+     mensagem.type = 'message'
      console.log(mensagem);
      promessa =  axios.post("https://mock-api.driven.com.br/api/vm/uol/messages", mensagem);
      renderizaMensagens();
@@ -29,13 +31,18 @@ function enviarMensagem(){
 
 function usuarioDefinido(){
      divLogin.remove();
-    renderizaMensagens();
      mensagem.from = usuario.name;
-     console.log(mensagem);
+     mensagem.type = 'status'
+     renderizaMensagens();
+     setInterval(renderizaMensagens, 3000);
+     setInterval(verificaStatus, 5000);
+    // 
+     console.log(mensagem);     
+
 }
 
 function erroUsuario(){
-     alert("Erro! ");
+     alert("Erro! Este usuário já foi utilizado.");
  
 
 }
@@ -58,10 +65,27 @@ function defineUsuario(){
                asMensagens = mensagens.data;
                boxMensagens.innerText = ""
                for(let i = asMensagens.length; i > 0 ; i-- ) {
+
+                 //   if(asMensagens[i].type == "message"){
                boxMensagens.innerHTML += 
                `<li data-test="message"><p>
-               <time>(${asMensagens[asMensagens.length - [i]].time})</time><strong>${asMensagens[asMensagens.length -[i]].from}</strong>Para <strong>${asMensagens[asMensagens.length - [i]].to}</strong>${asMensagens[asMensagens.length -[i]].text}</p></li>`
+               <time>(${asMensagens[asMensagens.length-[i]].time})</time>
+               <strong>${asMensagens[asMensagens.length-[i]].from}</strong>
+               para <strong>${asMensagens[asMensagens.length-[i]].to}</strong>
+               ${asMensagens[asMensagens.length-[i]].text}</p></li>`
+
+
+               
                }
-     })
+ 
+               boxMensagens.scrollTop = boxMensagens.scrollHeight;
+               console.log(asMensagens);
+
+               
+      })
  };
+
+ function verificaStatus(){
+     statusAtual = axios.post("https://mock-api.driven.com.br/api/vm/uol/status", usuario)
+  }
  
